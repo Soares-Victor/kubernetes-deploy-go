@@ -51,7 +51,7 @@ metadata:
     allow.http: "false"
 spec:
   rules:
-  - host: go.rancher.dev-ops-ninja.com
+  - host: teste-pipeline.rancherha.projectsysvictor.com
     http:
       paths:
         - path: /
