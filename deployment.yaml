@@ -51,7 +51,7 @@ metadata:
     allow.http: "true"
 spec:
   rules:
-  - host: teste2.rancherha.projectsysvictor.com
+  - host: hello-stg.rancherha.projectsysvictor.com
     http:
       paths:
         - path: /
