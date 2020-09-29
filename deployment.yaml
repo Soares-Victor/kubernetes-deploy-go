@@ -51,10 +51,10 @@ metadata:
     allow.http: "true"
 spec:
   rules:
-  - host: api-hello.rancherha.projectsysvictor.com
+  - host: dev.rancherha.projectsysvictor.com
     http:
       paths:
-        - path: /
+        - path: /api-hello
           backend:
             serviceName: go-service
             servicePort: 80
