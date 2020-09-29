@@ -51,7 +51,7 @@ metadata:
     allow.http: "true"
 spec:
   rules:
-  - host: dev.rancherha.projectsysvictor.com
+  - host: dev-apps.projectsysvictor.com
     http:
       paths:
         - path: /api-hello
