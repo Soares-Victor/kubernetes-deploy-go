@@ -48,7 +48,7 @@ metadata:
   #namespace: go
   name: go-ingress
   annotations:
-    allow.http: "false"
+    allow.http: "true"
 spec:
   rules:
   - host: teste-pipeline.rancherha.projectsysvictor.com
