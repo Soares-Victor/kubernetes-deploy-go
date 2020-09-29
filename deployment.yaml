@@ -51,7 +51,7 @@ metadata:
     allow.http: "true"
 spec:
   rules:
-  - host: teste-pipeline.rancherha.projectsysvictor.com
+  - host: teste4-pipeline.rancherha.projectsysvictor.com
     http:
       paths:
         - path: /
