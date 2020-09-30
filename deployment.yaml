@@ -51,7 +51,8 @@ metadata:
     allow.http: "true"
 spec:
   rules:
-  - host: dev-apps.projectsysvictor.com
+  #- host: dev-apps.projectsysvictor.com
+  - host: devops-stg.lyceum.cloud
     http:
       paths:
         - path: /api-hello
