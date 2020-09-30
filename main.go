@@ -6,7 +6,7 @@ import (
 	"log"
 )
 
-const webContent = "projectsys-victor:v10"
+const webContent = "Hello World"
 
 func main() {
 	http.HandleFunc("/", helloHandler)
