@@ -52,7 +52,7 @@ metadata:
 spec:
   rules:
   #- host: dev-apps.projectsysvictor.com
-  - host: devops-stg.lyceum.cloud
+  - host: identity-dev.lyceum.cloud
     http:
       paths:
         - path: /api-hello
