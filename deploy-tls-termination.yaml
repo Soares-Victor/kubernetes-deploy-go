@@ -7,14 +7,6 @@ metadata:
   labels:
     app.kubernetes.io/name: ingress-nginx
     app.kubernetes.io/instance: ingress-nginx
-
----
-apiVersion: v1
-kind: Controller  
-  autoscaling: 
-    enabled: "true"
-    minReplicas: "2"
-  replicaCount: "2"
 ---
 
 # Source: ingress-nginx/templates/controller-serviceaccount.yaml
@@ -683,3 +675,5 @@ spec:
       securityContext:
         runAsNonRoot: true
         runAsUser: 2000
+spec:
+  replicas: 3
