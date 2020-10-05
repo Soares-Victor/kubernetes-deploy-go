@@ -676,19 +676,14 @@ spec:
 
 ---
 # Configurando quantidade pods
-apiVersion: apps/v1
-kind: ReplicaSet
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
 metadata:
-  name: nginx
-  labels:
-    app: nginx
-    tier: nginx
+  name: nginx-scaler
 spec:
-  replicas: 2
-  selector:
-    matchLabels:
-      tier: nginx
-  template:
-    metadata:
-      labels:
-        tier: nginx
+  scaleTargetRef:
+    kind: ReplicaSet
+    name: nginx
+  minReplicas: 2
+  maxReplicas: 4
+  targetCPUUtilizationPercentage: 50
