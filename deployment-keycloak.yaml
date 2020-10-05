@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: keycloak
+  namespace: identity
+  labels:
+    app: keycloak
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: keycloak
+  template:
+    metadata:
+      labels:
+        app: keycloak
+    spec:
+      containers:
+      - name: keycloak
+        image: quay.io/keycloak/keycloak:11.0.2
+        env:
+        - name: KEYCLOAK_USER
+          value: "admin"
+        - name: KEYCLOAK_PASSWORD
+          value: "bhimA123"
+        - name: PROXY_ADDRESS_FORWARDING
+          value: "true"
+        - name: KEYCLOAK_FRONTEND_URL
+          value: https://keycloak-dev.projectsysvictor.com/auth
+        - name: DB_VENDOR
+          value: mysql
+        - name: DB_ADDR
+          value: dev-db-rancher.ckzvygwe8mhk.sa-east-1.rds.amazonaws.com
+        - name: DB_PORT
+          value: "3306"
+        - name: DB_DATABASE
+          value: KeyCloakDB
+        - name: DB_USER
+          value: admin
+        - name: DB_PASSWORD
+          value: admin0113
+        ports:
+        - name: http
+          containerPort: 8080
+        - name: https
+          containerPort: 8443
+        readinessProbe:
+          httpGet:
+            path: /auth/realms/master
+            port: 8080
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  namespace: identity
+  name: keycloak
+  annotations:
+    allow.http: "true"
+spec:
+  rules:
+  - host: keycloak-dev.projectsysvictor.com
+    http:
+      paths:
+        - path: /
+          backend:
+            serviceName: keycloak
+            servicePort: 80
