@@ -678,24 +678,24 @@ spec:
         runAsUser: 2000
 ---
 # Configurando quantidade pods
-apiVersion: apps/v1
-kind: ReplicaSet
-metadata:
-  name: nginx
-  labels:
-    app: nginx
-    tier: nginx
-spec:
-  # modify replicas according to your case
-  replicas: 2
-  selector:
-    matchLabels:
-      tier: nginx
-  template:
-    metadata:
-      labels:
-        tier: nginx
-    spec:
-      containers:
-      - name: nginx
-        image: nginx
+# apiVersion: apps/v1
+# kind: ReplicaSet
+# metadata:
+#   name: nginx
+#   labels:
+#     app: nginx
+#     tier: nginx
+# spec:
+#   # modify replicas according to your case
+#   replicas: 2
+#   selector:
+#     matchLabels:
+#       tier: nginx
+#   template:
+#     metadata:
+#       labels:
+#         tier: nginx
+#     spec:
+#       containers:
+#       - name: nginx
+#         image: nginx
