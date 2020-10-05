@@ -27,18 +27,18 @@ spec:
           value: "true"
         - name: KEYCLOAK_FRONTEND_URL
           value: https://identity-dev.lyceum.cloud/auth
-        - name: DB_VENDOR
-          value: mysql
-        - name: DB_ADDR
-          value: rds-stg.lyceum.cloud
-        - name: DB_PORT
-          value: "3306"
-        - name: DB_DATABASE
-          value: KeyCloakDB
-        - name: DB_USER
-          value: root
-        - name: DB_PASSWORD
-          value: bhimA123
+        # - name: DB_VENDOR
+        #   value: mysql
+        # - name: DB_ADDR
+        #   value: rds-stg.lyceum.cloud
+        # - name: DB_PORT
+        #   value: "3306"
+        # - name: DB_DATABASE
+        #   value: KeyCloakDB
+        # - name: DB_USER
+        #   value: root
+        # - name: DB_PASSWORD
+        #   value: bhimA123
         ports:
         - name: http
           containerPort: 8080
