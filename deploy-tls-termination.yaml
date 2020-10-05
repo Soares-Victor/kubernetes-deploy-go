@@ -676,3 +676,4 @@ spec:
       securityContext:
         runAsNonRoot: true
         runAsUser: 2000
+
