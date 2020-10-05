@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: ingress-nginx
+  name: ingress
   labels:
-    app.kubernetes.io/name: ingress-nginx
-    app.kubernetes.io/instance: ingress-nginx
+    app.kubernetes.io/name: ingress
+    app.kubernetes.io/instance: ingress
 
 ---
 # Source: ingress-nginx/templates/controller-serviceaccount.yaml
