@@ -697,3 +697,5 @@ spec:
       containers:
       - name: nginx
         image: nginx-lyceum:v1
+
+
