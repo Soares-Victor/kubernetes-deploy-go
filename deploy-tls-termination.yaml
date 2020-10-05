@@ -698,4 +698,4 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: nginx-lyceum:v1
+        image: nginx
