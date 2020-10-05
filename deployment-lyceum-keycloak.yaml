@@ -30,15 +30,15 @@ spec:
         - name: DB_VENDOR
           value: mysql
         - name: DB_ADDR
-          value: dev-db-rancher.ckzvygwe8mhk.sa-east-1.rds.amazonaws.com
+          value: rds-stg.lyceum.cloud
         - name: DB_PORT
           value: "3306"
         - name: DB_DATABASE
           value: KeyCloakDB
         - name: DB_USER
-          value: admin
+          value: root
         - name: DB_PASSWORD
-          value: admin0113
+          value: bhimA123
         ports:
         - name: http
           containerPort: 8080
