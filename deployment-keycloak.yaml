@@ -59,13 +59,13 @@ spec:
         #   value: admin0113
         ports:
         - name: http
-          containerPort: 80
+          containerPort: 8080
         - name: https
-          containerPort: 443
+          containerPort: 8443
         readinessProbe:
           httpGet:
             path: /auth/realms/master
-            port: 80
+            port: 8080
 ---
 apiVersion: extensions/v1beta1
 kind: Ingress
@@ -82,4 +82,4 @@ spec:
       paths:
       - backend:
           serviceName: keycloak
-          servicePort: 80
+          servicePort: 8080
