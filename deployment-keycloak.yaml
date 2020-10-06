@@ -27,18 +27,18 @@ spec:
           value: "true"
         - name: KEYCLOAK_FRONTEND_URL
           value: https://keycloak-dev.projectsysvictor.com/auth
-        - name: DB_VENDOR
-          value: mysql
-        - name: DB_ADDR
-          value: dev-db-rancher.ckzvygwe8mhk.sa-east-1.rds.amazonaws.com
-        - name: DB_PORT
-          value: "3306"
-        - name: DB_DATABASE
-          value: KeyCloakDB
-        - name: DB_USER
-          value: admin
-        - name: DB_PASSWORD
-          value: admin0113
+        # - name: DB_VENDOR
+        #   value: mysql
+        # - name: DB_ADDR
+        #   value: dev-db-rancher.ckzvygwe8mhk.sa-east-1.rds.amazonaws.com
+        # - name: DB_PORT
+        #   value: "3306"
+        # - name: DB_DATABASE
+        #   value: KeyCloakDB
+        # - name: DB_USER
+        #   value: admin
+        # - name: DB_PASSWORD
+        #   value: admin0113
         ports:
         - name: http
           containerPort: 8080
