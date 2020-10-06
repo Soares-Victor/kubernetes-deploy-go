@@ -67,9 +67,8 @@ spec:
             path: /auth/realms/master
             port: 8080
       securityContext:
-        runAsUser: 1000
-        fsGroup: 0
         runAsNonRoot: true
+        runAsUser: 2000
 ---
 apiVersion: extensions/v1beta1
 kind: Ingress
