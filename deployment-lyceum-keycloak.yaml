@@ -1,20 +1,20 @@
-apiVersion: v1
-kind: Service
-metadata:
-  namespace: identity
-  name: keycloak
-  labels:
-    app: keycloak
-spec:
-  ports:
-  - name: http
-    port: 8080
-    targetPort: 8080
-  selector:
-    app: keycloak
-  type: LoadBalancer
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   namespace: keycloak
+#   name: keycloak
+#   labels:
+#     app: keycloak
+# spec:
+#   ports:
+#   - name: http
+#     port: 8080
+#     targetPort: 8080
+#   selector:
+#     app: keycloak
+#   type: LoadBalancer
   
----
+# ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -65,6 +65,9 @@ spec:
           httpGet:
             path: /auth/realms/master
             port: 8080
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 2000
 ---
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
@@ -80,5 +83,5 @@ spec:
       paths:
         - path: /
           backend:
-            serviceName: keycloak
+            serviceName: ingress-nginx-controller
             servicePort: 80
