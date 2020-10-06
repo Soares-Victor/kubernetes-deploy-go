@@ -102,7 +102,7 @@ spec:
   - host: identity-dev.lyceum.cloud
     http:
       paths:
-        - path: /
+        - path: /auth
           backend:
             serviceName: keycloak
             servicePort: 80
