@@ -1,20 +1,17 @@
-# apiVersion: v1
-# kind: Service
-# metadata:
-#   namespace: identity
-#   name: keycloak
-#   labels:
-#     app: keycloak
-# spec:
-#   ports:
-#   - name: http
-#     port: 8080
-#     targetPort: 8080
-#   selector:
-#     app: keycloak
-#   type: LoadBalancer
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: identity
+  name: keycloak
+  labels:
+    app: keycloak
+spec:
+  ports:
+  - name: http
+    port: 8080
+    targetPort: 8080
   
-# ---
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
