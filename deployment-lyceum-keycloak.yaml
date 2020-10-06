@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  namespace: keycloak
+  namespace: identity
   name: keycloak
   labels:
     app: keycloak
