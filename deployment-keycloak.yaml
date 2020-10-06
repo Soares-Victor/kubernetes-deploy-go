@@ -57,15 +57,15 @@ spec:
         #   value: admin
         # - name: DB_PASSWORD
         #   value: admin0113
-        # ports:
-        # - name: http
-        #   containerPort: 8080
-        # - name: https
-        #   containerPort: 8443
-        # readinessProbe:
-        #   httpGet:
-        #     path: /auth/realms/master
-        #     port: 8080
+        ports:
+        - name: http
+          containerPort: 80
+        - name: https
+          containerPort: 443
+        readinessProbe:
+          httpGet:
+            path: /auth/realms/master
+            port: 80
 ---
 apiVersion: extensions/v1beta1
 kind: Ingress
