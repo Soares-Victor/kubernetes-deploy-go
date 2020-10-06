@@ -296,6 +296,7 @@ metadata:
   name: ingress-nginx-controller
   namespace: ingress
 spec:
+  replicas: 2
   type: LoadBalancer
   externalTrafficPolicy: Local
   ports:
