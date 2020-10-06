@@ -1,1 +1,133 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: identity
+  name: keycloak
+  labels:
+    app: keycloak
+spec:
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: keycloak
+  namespace: identity
+  labels:
+    app: keycloak
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: keycloak
+  template:
+    metadata:
+      labels:
+        app: keycloak
+    spec:
+      containers:
+      - name: keycloak
+        image: quay.io/keycloak/keycloak:11.0.2
+        env:
+        - name: KEYCLOAK_USER
+          value: "admin"
+        - name: KEYCLOAK_PASSWORD
+          value: "bhimA123"
+        - name: PROXY_ADDRESS_FORWARDING
+          value: "true"
+        - name: KEYCLOAK_FRONTEND_URL
+          value: https://identity-dev.lyceum.cloud/auth
+        - name: JDBC_PARAMS
+          value: "useSSL=false"
+        - name: DB_VENDOR
+          value: mysql
+        - name: DB_ADDR
+          value: rds-stg.lyceum.cloud
+        - name: DB_PORT
+          value: "3306"
+        - name: DB_DATABASE
+          value: KeyCloakDB
+        - name: DB_USER
+          value: root
+        - name: DB_PASSWORD
+          value: bhimA123
+        ports:
+        - name: http
+          containerPort: 8080
+        - name: https
+          containerPort: 8443
+        readinessProbe:
+          httpGet:
+            path: /auth/realms/master
+            port: 8080
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 2000
+---
+# apiVersion: extensions/v1beta1
+# kind: Ingress
+# metadata:
+#   namespace: identity
+#   name: keycloak
+#   annotations:
+#     kubernetes.io/tls-acme: "true"
+#     kubernetes.io/ingress.class: "nginx"
+#     ingress.kubernetes.io/force-ssl-redirect: "true"
+# spec:
+#   tls:
+#   - hosts:
+#     - identity-dev.lyceum.cloud
+#   rules:
+#   - host: identity-dev.lyceum.cloud
+#     http:
+#       paths:
+#       - path: /
+#         backend:
+#           serviceName: keycloak
+#           servicePort: 80
 
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  namespace: identity
+  name: keycloak
+  annotations:
+    allow.http: "true"
+spec:
+  rules:
+  - host: identity-dev.lyceum.cloud
+    http:
+      paths:
+        - path: /
+          backend:
+            serviceName: keycloak
+            servicePort: 80
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: coredns
+  namespace: kube-system
+data:
+  Corefile: |
+    .:53 {
+        log
+        errors
+        health
+        kubernetes cluster.local in-addr.arpa ip6.arpa {
+          pods insecure
+          upstream
+          fallthrough in-addr.arpa ip6.arpa
+        }
+        prometheus :9153
+        ready :8181
+        proxy . /etc/resolv.conf
+        cache 30
+        loop
+        reload
+        loadbalance
+    }
