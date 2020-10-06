@@ -66,6 +66,10 @@ spec:
           httpGet:
             path: /auth/realms/master
             port: 8080
+      securityContext:
+        runAsUser: 1000
+        fsGroup: 0
+        runAsNonRoot: true
 ---
 apiVersion: extensions/v1beta1
 kind: Ingress
@@ -75,9 +79,9 @@ metadata:
 spec:
   tls:
     - hosts:
-      - dev-keycloak.projectsysvictor.com
+      - keycloak-dev.projectsysvictor.com
   rules:
-  - host: dev-keycloak.projectsysvictor.com
+  - host: keycloak-dev.projectsysvictor.com
     http:
       paths:
       - backend:
