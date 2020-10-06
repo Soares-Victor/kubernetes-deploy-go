@@ -5,9 +5,9 @@ metadata:
 spec:
   tls:
     - hosts:
-      - https://keycloak-dev.projectsysvictor.com/
+      - keycloak-dev.projectsysvictor.com
   rules:
-  - host: https://keycloak-dev.projectsysvictor.com/
+  - host: keycloak-dev.projectsysvictor.com
     http:
       paths:
       - backend:
