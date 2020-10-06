@@ -41,6 +41,8 @@ spec:
           value: "true"
         - name: KEYCLOAK_FRONTEND_URL
           value: https://identity-dev.lyceum.cloud/auth
+        - name: JDBC_PARAMS
+          value: "useSSL=false"
         - name: DB_VENDOR
           value: mysql
         - name: DB_ADDR
