@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: keycloak
+spec:
+  tls:
+    - hosts:
+      - https://keycloak-dev.projectsysvictor.com/
+  rules:
+  - host: https://keycloak-dev.projectsysvictor.com/
+    http:
+      paths:
+      - backend:
+          serviceName: keycloak
+          servicePort: 8080
