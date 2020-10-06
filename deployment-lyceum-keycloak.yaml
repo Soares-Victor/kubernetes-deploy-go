@@ -82,7 +82,6 @@ spec:
   tls:
   - hosts:
     - identity-dev.lyceum.cloud
-    secretName: tls-com-example-keycloak
   rules:
   - host: identity-dev.lyceum.cloud
     http:
@@ -95,7 +94,6 @@ spec:
         backend:
           serviceName: identity-dev.lyceum.cloud
           servicePort: 80
----
 
 # apiVersion: networking.k8s.io/v1beta1
 # kind: Ingress
