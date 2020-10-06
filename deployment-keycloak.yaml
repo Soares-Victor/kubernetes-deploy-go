@@ -49,19 +49,34 @@ spec:
             path: /auth/realms/master
             port: 8080
 ---
-apiVersion: networking.k8s.io/v1beta1
+# apiVersion: networking.k8s.io/v1beta1
+# kind: Ingress
+# metadata:
+#   namespace: keycloak
+#   name: keycloak
+#   annotations:
+#     allow.http: "true"
+# spec:
+#   rules:
+#   - host: keycloak-dev.projectsysvictor.com
+#     http:
+#       paths:
+#         - path: /
+#           backend:
+#             serviceName: keycloak
+#             servicePort: 80
+apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  namespace: keycloak
   name: keycloak
-  annotations:
-    allow.http: "true"
 spec:
+  tls:
+    - hosts:
+      - KEYCLOAK_HOST
   rules:
-  - host: keycloak-dev.projectsysvictor.com
+  - host: KEYCLOAK_HOST
     http:
       paths:
-        - path: /
-          backend:
-            serviceName: keycloak
-            servicePort: 80
+      - backend:
+          serviceName: keycloak
+          servicePort: 8080
