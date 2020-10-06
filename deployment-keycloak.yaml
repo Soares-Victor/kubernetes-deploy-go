@@ -72,11 +72,11 @@ metadata:
 spec:
   tls:
     - hosts:
-      - KEYCLOAK_HOST
+      - keycloak-dev.projectsysvictor.com
   rules:
-  - host: KEYCLOAK_HOST
+  - host: keycloak-dev.projectsysvictor.com
     http:
       paths:
       - backend:
           serviceName: keycloak
-          servicePort: 8080
+          servicePort: 80
