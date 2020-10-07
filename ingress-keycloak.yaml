@@ -5,9 +5,9 @@ metadata:
 spec:
   tls:
     - hosts:
-      - keycloak-dev.projectsysvictor.com
+      - identity-dev.lyceum.cloud
   rules:
-  - host: keycloak-dev.projectsysvictor.com
+  - host: identity-dev.lyceum.cloud
     http:
       paths:
       - backend:
