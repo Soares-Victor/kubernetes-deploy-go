@@ -70,3 +70,8 @@ spec:
           httpGet:
             path: /auth/realms/master
             port: 8080
+          initialDelaySeconds: 300
+          periodSeconds: 30
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 2000
