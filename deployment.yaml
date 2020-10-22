@@ -4,7 +4,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: go-server
-  #namespace: go
+  namespace: api-gateway
   labels:
     app: goapi
 spec:
@@ -30,7 +30,7 @@ kind: Service
 apiVersion: v1
 metadata:
   name: go-service
-  #namespace: go
+  namespace: api-gateway
 spec:
   selector:
     app: goapi
@@ -45,14 +45,14 @@ spec:
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  #namespace: go
+  namespace: api-gateway
   name: go-ingress
   annotations:
     allow.http: "true"
 spec:
   rules:
-  - host: dev-apps.projectsysvictor.com
-  #- host: identity-dev.lyceum.cloud
+  #- host: dev-apps.projectsysvictor.com
+  - host: api-dev.lyceum.cloud
     http:
       paths:
         - path: /api-hello
